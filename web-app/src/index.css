@@ -1,3 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-primary: #f97316;
+  --color-background: #fff7ed;
+  --color-accent: #2563eb;
+  --color-border: #fed7aa;
+  --color-foreground: #9a3412;
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    font-family: 'Nunito', system-ui, sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Fredoka', system-ui, sans-serif;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

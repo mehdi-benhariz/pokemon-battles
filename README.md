@@ -165,3 +165,29 @@ About **4 hours**. This is not a timed test: focus on quality and clarity.
 As you may have noticed, a boilerplate is provided to make your job easier. Feel free to add types, create interfaces, change the existing architecture, and bring your own changes or improvements to it.
 
 If you lean towards front-end, you can spend more time on the UX/UI and completely rework the front end. Conversely, if you are more back-end oriented, feel free to enrich the business logic, structure the code, or improve performance and security.
+
+## Running
+
+Install and start each app in its own terminal:
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+```bash
+cd web-app
+npm install
+npm run dev
+```
+
+Copy `backend/.env.example` to `backend/.env` and set `PORT` (default `3001`). Copy `web-app/.env.example` to `web-app/.env` if the API is not on `http://localhost:3001` (`VITE_API_URL`).
+
+The API listens on the configured port. Vite prints the web app URL (usually [http://localhost:5173](http://localhost:5173)).
+
+`GET /pokemons` supports server-side pagination: `?page=1&limit=24&name=pika&types=fire,electric`.
+
+Paste your VirtualBrain chatbot id and API token into `CHATBOT_ID` and `CHATBOT_TOKEN` in [backend/src/chatbot.ts](backend/src/chatbot.ts). The battle route calls `POST /v1/chats/{id}/query` with that bearer token.
+
+`GET http://localhost:3001/contents/25` downloads one Pokémon as Markdown. `GET http://localhost:3001/contents/all` writes all 898 files into `backend/pokemons-ru` (the first run takes a while). Import that folder as a brain, then create a chatbot and use its token above.

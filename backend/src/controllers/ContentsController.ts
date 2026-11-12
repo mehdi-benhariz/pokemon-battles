@@ -1,31 +1,10 @@
-import { type Request, type Response, Router } from 'express'
+import { Router } from 'express'
+import { asyncHandler } from '../middleware/asyncHandler'
+import { downloadOne, exportAll } from '../services/contents.service'
 
 const ContentController = Router()
 
-
-/**
- * Save all pokemon as markdown in markdown folder
- * @route GET /contents/all
- * @group Contents
-*/
-ContentController.get(
-	'/all',
-	async (_req: Request, res: Response) => {
-		return res.sendStatus(200)
-	}
-)
-
-/**
- * Return a pokemon as markdown
- * @route GET /contents/:id
- * @group Contents
- * @param {string} id.path.required - Pokemon ID
-*/
-ContentController.get(
-	'/:pokemonId',
-	async (_req: Request, res: Response) => {
-		return res.sendStatus(200)
-	}
-)
+ContentController.get('/all', asyncHandler(exportAll))
+ContentController.get('/:pokemonId', asyncHandler(downloadOne))
 
 export { ContentController }
