@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { IoFlash } from 'react-icons/io5';
 import type { PokemonSummary } from '../types';
+import { BattleText } from './BattleText';
 import { useTheme } from './ThemeContext';
 
 interface BattlePanelProps {
@@ -54,11 +55,7 @@ export const BattlePanel: FC<BattlePanelProps> = ({
           {fighting ? 'Battling…' : 'Start battle'}
         </button>
       </div>
-      {battle && (
-        <pre className="mt-3 max-h-48 overflow-auto whitespace-pre-wrap rounded-xl border-2 border-slate-200 bg-slate-50 p-4 text-sm leading-relaxed dark:border-slate-700 dark:bg-slate-800">
-          {battle}
-        </pre>
-      )}
+      {battle.trim() && <BattleText text={battle} />}
     </section>
   );
 };

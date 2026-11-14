@@ -188,6 +188,6 @@ The API listens on the configured port. Vite prints the web app URL (usually [ht
 
 `GET /pokemons` supports server-side pagination: `?page=1&limit=24&name=pika&types=fire,electric`.
 
-Paste your VirtualBrain chatbot id and API token into `CHATBOT_ID` and `CHATBOT_TOKEN` in [backend/src/chatbot.ts](backend/src/chatbot.ts). The battle route calls `POST /v1/chats/{id}/query` with that bearer token.
+Paste your VirtualBrain chatbot id and API key into `CHATBOT_ID` and `CHATBOT_TOKEN` in `backend/.env` (see `backend/.env.example`). The battle route exchanges a `vb_ak_` key for a Bearer token, then streams `POST /v1/open-completion/{id}/query`.
 
 `GET http://localhost:3001/contents/25` downloads one Pokémon as Markdown. `GET http://localhost:3001/contents/all` writes all 898 files into `backend/pokemons-ru` (the first run takes a while). Import that folder as a brain, then create a chatbot and use its token above.
